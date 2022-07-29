@@ -19,4 +19,7 @@ describe('Testes da função HandlerElephants', () => {
   it('Onde os elefantes estão localizados', () => {
     expect(handlerElephants('location')).toEqual('NW');
   });
+  it('A função recebe um Array', () => {
+    expect(typeof handlerElephants([])).toEqual('string');
+  });
 });
