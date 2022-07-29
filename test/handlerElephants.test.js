@@ -19,7 +19,25 @@ describe('Testes da função HandlerElephants', () => {
   it('Onde os elefantes estão localizados', () => {
     expect(handlerElephants('location')).toEqual('NW');
   });
-  it('A função recebe um Array', () => {
+  it('A função handlerElephants é um String', () => {
     expect(typeof handlerElephants([])).toEqual('string');
+  });
+  it('O contador handlerElephants é um Number', () => {
+    expect(typeof handlerElephants('count')).toEqual('number');
+  });
+  it('A names é um String', () => {
+    expect(typeof handlerElephants('names')).toEqual('object');
+  });
+  it('O averageAge é um Number', () => {
+    expect(typeof handlerElephants('averageAge')).toEqual('number');
+  });
+  it('Location é um String', () => {
+    expect(typeof handlerElephants('location')).toEqual('string');
+  });
+  it('O popularity é um Number', () => {
+    expect(typeof handlerElephants('popularity')).toEqual('number');
+  });
+  it('O availability é um Number', () => {
+    expect(typeof handlerElephants('availability')).toEqual('object');
   });
 });
