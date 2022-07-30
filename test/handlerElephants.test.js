@@ -40,4 +40,7 @@ describe('Testes da função HandlerElephants', () => {
   it('O availability é um Number', () => {
     expect(typeof handlerElephants('availability')).toEqual('object');
   });
+  // it('O availability é um handlerElephants', () => {
+  //   expect(handlerElephants()).toBe('object');
+  // });
 });
