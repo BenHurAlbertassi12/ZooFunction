@@ -39,8 +39,21 @@ describe('Testes da função getOpeningHours', () => {
   it('teste Odin', () => {
     expect(getOpeningHours('Wednesday', '12:00-PM')).toEqual('The zoo is open');
   });
-});
+  it('teste formato de hora totalmente errado', () => {
+    expect(() => getOpeningHours('Odin', 'c3p0:r2d2-SW')).toThrowError(new Error('The day must be valid. Example: Monday'));
+  });
+  it('testando se a parada do AM PM ainda funfa estando errado', () => {
+    expect(() => getOpeningHours('Wednesday', '11:40-SW')).toThrowError(new Error('The abbreviation must be \'AM\' or \'PM\''));
+  });
+  it('testando se a minutagem vai de 0 a 59', () => {
+    expect(() => getOpeningHours('Monday', '11:61-AM')).toThrowError(new Error('The minutes must be between 0 and 59'));
+  });
+//   it('testando se a hora tem que ser um numero', () => {
+//     expect(() => getOpeningHours('Tuesday', 'hora')).toThrowError(new Error('The hour should represent a number'));
+//   });
+// });
 
 // Dica, olhar sempre o Uncovered line, faz o teste seguindo essa linhaa,
 // coisa flui, noite inteira tentando resolver isso,
 // em 5 min terminei o exercicio
+})
