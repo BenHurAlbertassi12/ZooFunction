@@ -40,3 +40,7 @@ describe('Testes da função getOpeningHours', () => {
     expect(getOpeningHours('Wednesday', '12:00-PM')).toEqual('The zoo is open');
   });
 });
+
+// Dica, olhar sempre o Uncovered line, faz o teste seguindo essa linhaa,
+// coisa flui, noite inteira tentando resolver isso,
+// em 5 min terminei o exercicio
