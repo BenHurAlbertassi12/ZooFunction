@@ -4,7 +4,7 @@ function getAnimalsOlderThan(animal, age) {
   // seu código aqui
   const idadeAnimalOlder = data.species.forEach((racas) => {
     if (racas.name === animal) {
-      return racas = (data.species.residents.age >= age);
+      return racas.residents.some(residents) >= age);
     }
   });
 }
