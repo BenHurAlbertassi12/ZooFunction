@@ -30,9 +30,13 @@ describe('Testes da função getOpeningHours', () => {
   //     getOpeningHours([]);
   //   }).toThrow('Cannot read properties of undefined (reading \'toUpperCase\')');
   // });
-  it('teste linha 57 a 64', () => {
-    expect(() => {
-      getOpeningHours('openOrClosed');
-    }).toContain();
+  it('teste Monday', () => {
+    expect(getOpeningHours('Monday', '12:00-AM')).toEqual('The zoo is closed');
+  });
+  it('teste Tuesday', () => {
+    expect(getOpeningHours('Tuesday', '12:00-AM')).toEqual('The zoo is closed');
+  });
+  it('teste Odin', () => {
+    expect(getOpeningHours('Wednesday', '12:00-PM')).toEqual('The zoo is open');
   });
 });
