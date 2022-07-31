@@ -2,9 +2,9 @@ const data = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
-  const idadeAnimalOlder = data.species.map((raca) =>
+  const idadeAnimalOlder = data.species.find((raca) =>
     raca.name === animal);
-  idadeAnimalOlder.residents.every((residents) =>
+  return idadeAnimalOlder.residents.every((residents) =>
     residents.age >= age);
 }
 // console.log(getAnimalsOlderThan());
