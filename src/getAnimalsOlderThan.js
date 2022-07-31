@@ -4,12 +4,12 @@ function getAnimalsOlderThan(animal, age) {
   // seu código aqui
   const idadeAnimalOlder = data.species.forEach((racas) => {
     if (racas.name === animal) {
-      idadeAnimalOlder.residents.every((residents) => {
-        if (residents.age >= age) {
-          return idadeAnimalOlder;
-        }
-        return getAnimalsOlderThan();
-      });
+      return idadeAnimalOlder.residents.every('residents');
+    }
+    function idadeAnimalOlder(age) {
+      if (data.residents.age >= age) {
+        return getAnimalsOlderThan(idadeAnimalOlder);
+      }
     }
   });
 }
