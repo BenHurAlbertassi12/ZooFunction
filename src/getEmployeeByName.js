@@ -1,11 +1,11 @@
 const { employees } = require('../data/zoo_data');
-// const data = require('../data/zoo_data');
+const data = require('../data/zoo_data');
 
-function getEmployeeByName(primeiroNome, sobreNome, ...employeeName) {
+function getEmployeeByName(primeiroNome, sobreNome, employeeName) {
   // seu código aqui
   if (employeeName.length === 0) return {};
-  return employees.find((nickName) =>
-    nickName.firstName === employeeName || nickName.lastName === employeeName);
+  return data.employees.find((nickName) =>
+    (nickName.firstName === employeeName || nickName.lastName === employeeName));
 }
 
 // ✓ sem parâmetros, retorna um objeto vazio (3ms)
