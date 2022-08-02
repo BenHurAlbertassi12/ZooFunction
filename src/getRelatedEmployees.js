@@ -20,28 +20,26 @@ function getRelatedEmployees(managerId) {
   // Caso a pessoa seja gerente, retorne um array contendo nome e sobrenome das pessoas colaboradoras gerenciadas por essa pessoa
   const verFal = isManager(managerId);
   if (verFal === true) {
-    const novoArray = data.employees.filter((funcionarios) =>
-      funcionarios.date.managers.includes(managerId));
-    return funcionario.map((funcionarios) =>
-      `${funcionarios.firstName} ${funcionarios.lastName}`);
+    const novoArray = [];
+    data.employees.filter((funcionarios) => {
+      if (funcionarios.managers.includes(managerId)) {
+        employees.push(`${funcionarios.firstName} ${funcionarios.lastName}`);
+      }
+    });
+    return novoArray;
   }
-  console.log(isManager !== true);
+
+  // console.log(isManager !== true);
   // Caso a pessoa não seja gerente, dispare um erro com a mensagem: 'O id inserido não é de uma pessoa colaboradora gerente!'
 
   if (isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
 }
-console.log(getRelatedEmployees('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
+
+// console.log(getRelatedEmployees('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 // https://www.w3schools.com/jsref/jsref_includes_array.asp
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
 // fruits.includes("Mango");
 
 module.exports = { isManager, getRelatedEmployees };
-
-//  if (isManager === true) {
-//   const funcionario = data.employees.filter((funcionarios) =>
-//   funcionarios.date.managers.includes(managerId));
-// return funcionario.map((funcionarios) =>
-//   `${funcionarios.firstName} ${funcionarios.lastName}`);//
-// }
