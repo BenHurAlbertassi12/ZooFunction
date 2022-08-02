@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+const { employees } = require('../data/zoo_data');
 
 const gerenteIdNumber = ['9e7d4524-363c-416a-8759-8aa7e50c0992',
   'fdb2543b-5662-46a7-badc-93d960fdc0a8',
@@ -14,28 +15,28 @@ function isManager(id) {
     recebeValor.id === id && id === comparacao);
 }
 console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
+const novaArray = [];
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui
-  // Caso a pessoa seja gerente, retorne um array contendo nome e sobrenome das pessoas colaboradoras gerenciadas por essa pessoa
-  const verFal = isManager(managerId);
-  if (verFal === true) {
-    const novoArray = [];
-    data.employees.filter((funcionarios) => {
-      if (funcionarios.managers.includes(managerId)) {
-        employees.push(`${funcionarios.firstName} ${funcionarios.lastName}`);
+  const preco = isManager(managerId);
+  if (preco !== false) {
+    employees.forEach((pessoinha) => {
+      // escolha do forEach pois o 'find', 'map', 'filer' sempre espera retorno
+      if (pessoinha.managers.includes(managerId)) {
+        novaArray.push(`${pessoinha.firstName} ${pessoinha.lastName}`);
       }
     });
-    return novoArray;
+    return novaArray;
   }
 
-  // console.log(isManager !== true);
-  // Caso a pessoa não seja gerente, dispare um erro com a mensagem: 'O id inserido não é de uma pessoa colaboradora gerente!'
-
-  if (isManager(managerId)) {
+  if (preco !== true) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
 }
+// codigo dando erro, proucurei meu amigo Vinicio Barreto ele me ajudou,
+// basicamente o codigo não estava indo pois a forma que fiz o if
+// não estava retornando o valor necessario.
+// criei uma nova constante e joguei o valor para dedntro dela.
 
 // console.log(getRelatedEmployees('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 // https://www.w3schools.com/jsref/jsref_includes_array.asp
