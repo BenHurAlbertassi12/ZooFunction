@@ -14,7 +14,6 @@ function countEntrants(entrants) {
     }
     return { child: 0, adult: 0, senior: 0 };
   }
-
   );
 
 }
