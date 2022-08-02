@@ -11,11 +11,12 @@ function countEntrants(entrants) {
     } else
       (idade.age < 50 && idade.age >= 18)
     classe.adult += 1;
-  }
-    return { child: 0, adult: 0, senior: 0 };
+  }   
 }
-  );
+return classe;
 
+  );
+{ child: 0, adult: 0, senior: 0 }
 }
 
 function calculateEntry(entrants) {
