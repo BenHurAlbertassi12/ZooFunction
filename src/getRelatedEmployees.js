@@ -16,16 +16,16 @@ console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'));
 function getRelatedEmployees(managerId) {
   // seu código aqui
   // Caso a pessoa seja gerente, retorne um array contendo nome e sobrenome das pessoas colaboradoras gerenciadas por essa pessoa
-  if (managerId(isManager) === true) {
+  if ((isManager) === true) {
     const funcionario = data.employees.filter((funcionarios) =>
-      funcionarios.managers.push((isManager)));
+      funcionarios.managers.push((managerId)));
     return funcionario.map((funcionarios) => `${funcionarios.firstName}${funcionarios.lastName}`);
   }
   // Caso a pessoa não seja gerente, dispare um erro com a mensagem: 'O id inserido não é de uma pessoa colaboradora gerente!'
 
-  // if (isManager(managerId) === false) {
-  //   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-  // }
+  if (isManager(managerId) === false) {
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+  }
 }
 // https://www.w3schools.com/jsref/jsref_push.asp
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
