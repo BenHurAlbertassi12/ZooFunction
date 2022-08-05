@@ -1,34 +1,37 @@
 const { species, hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const hExibicao1 = ((dia) => {
-  species.filter('availability');
-  const hExibicao2 = hExibicao1.includes(dia);
-  const hExibicao3 = hExibicao2.map((name) => name);
-  return hExibicao3
-})
+const exibicaoAnimal = (day) => species.filter((availability) =>
+  availability.includes(day))
+  .map((name) => name);
 
 const diaFechado = () => ({
-  officeHour: 'closed',
-  exhibition: 'o Zoologico esta Fechado'
-})
+  officeHour: 'CLOSED',
+  exhibition: 'The zoo will be closed!',
+});
 
-const fechado = (dia) => {
-  if (dia === 'Monday') {
-    return diaFechado()
-  }
-}
+const retDiaFechado = (dia) => {
+  if (dia === 'Monday') return diaFechado();
 
-const { open, close } = hours[day];
-return {
-  officeHour: `Open from ${open}am until ${close}pm`,
-  exhibition: animalArrExibition(day),
+  const { aberto, encerrado } = hours[dia];
+  return {
+    officeHour: `Open from ${aberto}am until ${encerrado}pm`,
+    exhibition: exibicaoAnimal(dia),
+  };
 };
-
-
-
 function getSchedule(scheduleTarget) {
   // seu código aqui
+  const animal = species.map((name) => name);
+  const dataHora = Object.keys(hours);
+
+  if (animal.push(scheduleTarget)) {
+    return {
+      [scheduleTarget]: retDiaFechado(scheduleTarget),
+    };
+  }
+  if (scheduleTarget === 'Monday') {
+    return { Monday: retDiaFechado() };
+  }
 }
 
 module.exports = getSchedule;
