@@ -1,37 +1,50 @@
 const { species, hours } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
+// const data = require('../data/zoo_data');
 
-const exibicaoAnimal = (day) => species.filter((availability) =>
-  availability.includes(day))
-  .map((name) => name);
+const exibicaoAnimal = (dia) => species.filter(({ availability }) =>
+  availability.includes(dia)).map((name) => name.name);
 
+// variavel para retorno, se o dia estiver fechado retorna para ca com as frases
 const diaFechado = () => ({
-  officeHour: 'CLOSED',
+  // frases ditas pelo npm test.
   exhibition: 'The zoo will be closed!',
+  officeHour: 'CLOSED',
 });
 
-const retDiaFechado = (dia) => {
-  if (dia === 'Monday') return diaFechado();
-
-  const { aberto, encerrado } = hours[dia];
+const retDiaAberto = (diaSem) => {
+  if (diaSem === 'Monday') return diaFechado();
+  // { open, close } recebidos do zoo_data.js
+  const { open, close } = hours[diaSem];
+  // nomes do retorno definidos pelo readme
+  // frases dos objetos retiradas do npm test
   return {
-    officeHour: `Open from ${aberto}am until ${encerrado}pm`,
-    exhibition: exibicaoAnimal(dia),
+    exhibition: exibicaoAnimal(diaSem),
+    officeHour: `Open from ${open}am until ${close}pm`,
   };
 };
+
+// console.log(retDiaFechado());
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
-  const animal = species.map((name) => name);
   const dataHora = Object.keys(hours);
+  const animal = species.map((name) => name.name);
 
-  if (animal.push(scheduleTarget)) {
+  if (dataHora.includes(scheduleTarget)) {
     return {
-      [scheduleTarget]: retDiaFechado(scheduleTarget),
+      [scheduleTarget]: retDiaAberto(scheduleTarget),
     };
   }
+  // se o dia for igual a uma segunda-feira ele vai retornar as frases da variavel de retorno 'retDiaAberto'
   if (scheduleTarget === 'Monday') {
-    return { Monday: retDiaFechado() };
+    return { Monday: retDiaAberto() };
   }
+  // se for passado um animal, deverá retornar um array com os dias em que ele está em exibição
+  if (animal.includes(scheduleTarget)) {
+    return species.filter((name) => name.name === scheduleTarget)[0].availability;
+  }
+  return dataHora.reduce((animall, diia) => ({ ...animall, [diia]: retDiaAberto(diia) }), []);
 }
+// console.log(getSchedule('lions'));
 
 module.exports = getSchedule;
